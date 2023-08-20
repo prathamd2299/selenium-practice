@@ -9,45 +9,47 @@ import org.openqa.selenium.interactions.Actions;
 public class DragAndDropOperations {
 
 	public static void main(String[] args) throws InterruptedException {
-		WebDriver driver = new ChromeDriver(); 
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\admin\\.cache\\selenium\\chromedriver\\win64\\116.0.5845.96\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
 		driver.get("https://jqueryui.com/droppable/");
-		
-		//Maximizing window
+
+		// Maximizing window
 		driver.manage().window().maximize();
-						
-		//sleep for 3 seconds
+
+		// sleep for 3 seconds
 		Thread.sleep(3000);
-		
+
 		driver.switchTo().frame(0);
-		
+
 		Thread.sleep(2000);
-		
+
 		Actions action = new Actions(driver);
-		
+
 		WebElement sourceEl = driver.findElement(By.xpath("//div[@id='draggable']"));
-		
+
 		WebElement targetEl = driver.findElement(By.xpath("//div[@id='droppable']"));
-		
+
 //		action.clickAndHold(sourceEl).build().perform();
 //		Thread.sleep(2000);
 //		action.moveToElement(targetEl).build().perform();
 //		Thread.sleep(2000);
 //		action.release(targetEl).build().perform();
 //		Thread.sleep(2000);
-		
+
 		action.clickAndHold(sourceEl).moveToElement(targetEl).release(targetEl).build().perform();
-		
-		//verify text changed in to 'Drop here' box 
+
+		// verify text changed in to 'Drop here' box
 		String textTo = targetEl.getText();
 
-		if(textTo.equals("Dropped!")) {
-		System.out.println("PASS: Source is dropped to target as expected");
-		}else {
+		if (textTo.equals("Dropped!")) {
+			System.out.println("PASS: Source is dropped to target as expected");
+		} else {
 			System.out.println("FAIL: Source couldn't be dropped to target as expected");
 		}
-		
+
 		Thread.sleep(2000);
-		
+
 		driver.close();
 	}
 

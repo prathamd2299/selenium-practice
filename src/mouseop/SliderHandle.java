@@ -9,6 +9,8 @@ import org.openqa.selenium.interactions.Actions;
 public class SliderHandle {
 
 	public static void main(String[] args) throws InterruptedException {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\admin\\.cache\\selenium\\chromedriver\\win64\\116.0.5845.96\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.navigate().to("https://jqueryui.com/slider/");
 		

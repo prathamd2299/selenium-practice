@@ -14,6 +14,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class TakeScreenshotHandle {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\admin\\.cache\\selenium\\chromedriver\\win64\\116.0.5845.96\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.tutorialspoint.com/selenium/selenium_automation_practice.htm");
 		
