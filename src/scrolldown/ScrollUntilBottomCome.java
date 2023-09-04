@@ -2,10 +2,9 @@ package scrolldown;
 
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ScrollDownHandle {
+public class ScrollUntilBottomCome {
 
 	public static void main(String[] args) throws InterruptedException {
 		System.setProperty("webdriver.chrome.driver",
@@ -13,13 +12,15 @@ public class ScrollDownHandle {
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://rahulshettyacademy.com/AutomationPractice/");
 		Thread.sleep(2000);
-		driver.manage().window().maximize();
 		JavascriptExecutor js = (JavascriptExecutor) driver;
+		// Scrolling upto webpage bottom come
+		js.executeScript("window.scrollTo(0,document.body.scrollHeight)");
+		Thread.sleep(2000);
 
-		// scrolldown by using pixel
-		js.executeScript("window.scrollBy(0,1000)", "");
-
-		driver.close();
+		// Scrolling upto webpage top come
+		js.executeScript("window.scrollTo(document.body.scrollHeight,0)");
+		Thread.sleep(2000);
+		driver.quit();
 	}
 
 }
